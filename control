@@ -1,9 +1,9 @@
 Package: com.example.chuanshaoji.vip
-Name: 传书纪会员破解
+Name: DJ串烧集会员破解
 Depends: mobilesubstrate
 Version: 1.0.0
 Architecture: iphoneos-arm64
-Description: 解锁传书纪会员权限，会员期限至2099年，用户昵称改为"喜爱民谣破解测试"
+Description: 解锁DJ串烧集会员权限，会员期限至2099年，用户昵称改为"喜爱民谣破解测试"
 Maintainer: Example <example@example.com>
 Author: Example
 Section: Tweaks
