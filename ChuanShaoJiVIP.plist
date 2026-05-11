@@ -6,7 +6,7 @@
     <dict>
         <key>BundleIdentifiers</key>
         <array>
-            <string>*chuanShaoJi*</string>
+            <string>com.lanhaizhixing.chuanShaoJi</string>
         </array>
     </dict>
 </dict>
