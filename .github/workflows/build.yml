@@ -18,8 +18,10 @@ jobs:
     - name: Set up Theos
       run: |
         sudo apt-get update
-        sudo apt-get install -y ldid fakeroot dpkg-dev
+        sudo apt-get install -y fakeroot dpkg-dev build-essential git curl
         git clone --depth=1 https://github.com/theos/theos.git ~/theos
+        curl -LO https://github.com/ProcursusTeam/ldid/releases/latest/download/ldid.deb
+        sudo dpkg -i ldid.deb
         echo "export THEOS=~/theos" >> ~/.bashrc
         echo "export PATH=~/theos/bin:$PATH" >> ~/.bashrc
         source ~/.bashrc
