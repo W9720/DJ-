@@ -1,0 +1,36 @@
+name: Build Tweak
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Theos
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ldid fakeroot dpkg-dev
+        git clone --depth=1 https://github.com/theos/theos.git ~/theos
+        echo "export THEOS=~/theos" >> ~/.bashrc
+        echo "export PATH=~/theos/bin:$PATH" >> ~/.bashrc
+        source ~/.bashrc
+        
+    - name: Build Tweak
+      run: |
+        source ~/.bashrc
+        make package
+        
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Tweak-Package
+        path: packages/*.deb
