@@ -18,10 +18,12 @@ jobs:
     - name: Set up Theos
       run: |
         sudo apt-get update
-        sudo apt-get install -y fakeroot dpkg-dev build-essential git curl
+        sudo apt-get install -y fakeroot dpkg-dev build-essential git curl apt-transport-https
+        curl -fsSL https://apt.procursus.dev/keyring | sudo gpg --dearmor -o /usr/share/keyrings/procursus-archive-keyring.gpg
+        echo "deb [signed-by=/usr/share/keyrings/procursus-archive-keyring.gpg] https://apt.procursus.dev/ubuntu jammy main" | sudo tee /etc/apt/sources.list.d/procursus.list
+        sudo apt-get update
+        sudo apt-get install -y ldid
         git clone --depth=1 https://github.com/theos/theos.git ~/theos
-        curl -LO https://github.com/ProcursusTeam/ldid/releases/latest/download/ldid.deb
-        sudo dpkg -i ldid.deb
         echo "export THEOS=~/theos" >> ~/.bashrc
         echo "export PATH=~/theos/bin:$PATH" >> ~/.bashrc
         source ~/.bashrc
